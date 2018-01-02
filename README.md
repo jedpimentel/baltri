@@ -1,4 +1,3 @@
-# Baltrí
 Saludos y feliz 2018 departe de toda la familia Baltrí!
 
 Bienvenidos a nuestra moderna página web!
