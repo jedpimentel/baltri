@@ -1,92 +1,137 @@
-
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>BALTRI</title>
-        <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    </head>
-    <body style="font-family:courier; color:white; background-color: black">
-
-        <!-- REFACTOR: https://aframe.io/docs/0.8.0/components/sound.html -->
-        <audio id='audio-clip'>
-          <source src="placeholder.flac" type='audio/flac' />
-          <p>Your user agent does not support the HTML5 Audio element.</p>
-        </audio>
-        <section id="main"></section>
-
-        <a-scene id="scene" embedded style="height:1000px;width:1000px;">
-        <!-- <a-scene id="scene" embedded style="height:1000px;width:1000px;"> -->
-
-            <!-- qwer  https://glitch.com/edit/#!/a-frame-mouse-click-example?path=index.html:25:6 -->
-            <a-entity id="camera" camera look-controls wasd-controls cursor="rayOrigin: mouse" position="0 1.6 0">
-                <a-cylinder id="fing-longer" position="0.2 -0.4 -0.9" radius="0.01" height= "1.0" rotation="90 0 0" color="beige" opacity="1.0"></a-cylinder>
-            </a-entity>
-
-            <!-- place these things first in HTML, for render order reasons -->
-            <a-image src="turtles-in-sink.jpg" position="0 -15 0" rotation="90 0 0" width="20.48" height="15.36"></a-image>
-            <a-image src="beach-on-cup.jpg" position="-10 2.15 0" rotation="0 90 0" width="5.76" height="10.24"></a-image>
-            <a-image src="mella.png" position="-10.01 -0.09 0" rotation="0 90 0" width="5.76" height="5.76"></a-image>
-
-            <!-- transparency fix, ensure the stranslucent floor tiles and stuff -->
-            <!-- are higher up in the html, for transparency reasons -->
-            <a-entity id="blob"></a-entity>
-
-            <a-assets>
-                <video id="video-asset" src="baltri.mp4"></video>
-            </a-assets>
-
-            <a-box id="blue-cube" position="-3 0.5 -11" rotation="0 45 0" color="blue" opacity="0.2"></a-box>
-            <a-sphere id="red-sphere" position="0 0.5 -11" radius="0.5" color="red" opacity="0.2"></a-sphere>
-            <a-cylinder id='green-cyl' position="3 0.75 -11" radius="0.5" height="1.5" color="green" opacity="0.2"></a-cylinder>
-
-            <a-video id="video-clip" src="#video-asset" position="-3 2 -11" width="2.56" height="1.44" position="0 2 -5"></a-video>
-
-            <a-entity class='christmas-stuff' position='-4 0.01 -9'>
-                <a-entity class='grid-fitter' position='0.5 0 0.5'>
-                    <a-entity id='christmas-tree' position='5 0 3'>
-                        <a-entity position='0 0.7 0'>
-                            <a-cone color='green' radius-bottom='1' height='2.05' position='0 1.025 0'></a-cone>
-                        </a-entity>
-                        <a-cylinder color='saddlebrown' radius='0.25' height='0.7' position='0 0.35 0'></a-cylinder>
-                    </a-entity>
-                </a-entity>
-            </a-entity>
-
-            <a-entity id='20181201-dream' position='-4 0.01 -9'>
-                <a-entity class='grid-fitter' position='0.5 0 0.5'>
-
-                    <a-circle radius='0.25' position='0 0 1' rotation='-90 0 0' opacity='0.2'></a-circle>
-                    <a-circle radius='0.25' position='1 0 0' rotation='-90 0 0' opacity='0.2'></a-circle>
-                    <a-circle radius='0.25' position='2 0 0' rotation='-90 0 0' opacity='0.2'></a-circle>
-                    <a-circle radius='0.25' position='2 0 1' rotation='-90 0 0' opacity='0.2'></a-circle>
-                    <a-circle radius='0.25' position='2 0 2' rotation='-90 0 0' opacity='0.2'></a-circle>
-
-                    <a-circle radius='1.5' position='3 0 6' rotation='-90 0 0' color='green' opacity='0.5'></a-circle>
-                    <a-image src='lamb.png' position='3 0.5 6'></a-image>
-                </a-entity>
-            </a-entity>
-
-            <!-- place these things last in HTML, for render order reasons -->
-            <a-image src="abstract.png" position="10 2 0" rotation="0 -90 0" width="6" height="6"></a-image>
-
-        </a-scene>
-        <div id="0Panel">
-            <h1>BALTRI RPG</h1>
-            <br>
-            <p>"Porque Tu Maldita Madre"</p>
-            <br>
-            <p>Descubra <span class="blu">LAS</span> <span class="red">TRES</span> <span class="gre">ACCIONES</span>.<p>
-            <p>Aqui falta Baina</p>
-            <p></p>
-            <footer>
-                <br>
-                <p>123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-                <br>
-                <p style="text-align: right; padding-right: 8px">~ <span class="gre">Meri Crima</span></p>
-            </footer>
-        </div>
-
-        <script src="main.js"></script>
-    </body>
+  <head>
+    <title>Hello, WebVR! - A-Frame</title>
+    <meta name="description" content="Hello, WebVR! - A-Frame">
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-sky color="#000000"></a-sky>
+<!--       meant as an indicator, to get a feel for where coordinates are -->
+      <a-sphere position="-2 0 -2" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="-1 0 -2" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="0 0 -2" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="1 0 -2" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="2 0 -2" radius="0.01" color="#ffffff" shadow></a-sphere>
+      
+      
+<!--       back wall, four rows of five dots -->
+      <a-sphere position="-2 0 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="-1 0 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="0 0 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="1 0 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="2 0 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      
+      <a-sphere position="-2 1 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="-1 1 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="0 1 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="1 1 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="2 1 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      
+      <a-sphere position="-2 2 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="-1 2 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="0 2 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="1 2 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="2 2 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      
+      <a-sphere position="-2 3 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="-1 3 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="0 3 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="1 3 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      <a-sphere position="2 3 -6" radius="0.01" color="#ffffff" shadow></a-sphere>
+      
+<!--       text on top of the back wall -->
+      <a-text position="-2 3 -2" value="BALTRI"></a-text>
+      <a-text position="-2 3 -3" value="BALTRI"></a-text>
+      <a-text position="-2 3 -4" value="BALTRI"></a-text>
+      <a-text position="-2 3 -5" value="BALTRI"></a-text>
+      <a-text position="-2 3 -6" value="BALTRI"></a-text>
+      
+<!--       leave the plane, but change its color -->
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#FFC65D" shadow></a-plane>
+<!--       add some reference planes around you -->
+      <a-plane position="4 0 0" rotation="-90 0 0" width="4" height="4" color="#888888" shadow></a-plane>
+      <a-plane position="-4 0 0" rotation="-90 0 0" width="4" height="4" color="#888888" shadow></a-plane>
+      <a-plane position="0 0 4" rotation="-90 0 0" width="4" height="4" color="#0000ff" shadow material="transparent: true; opacity: 0.2"></a-plane>
+<!--       you now have a road, to a house with three rooms. Red, Black, and Green. -->
+      <a-plane position="-4 0 -8" rotation="-90 0 0" width="4" height="4" color="#ff0000" shadow material="transparent: true; opacity: 0.2"></a-plane>
+      <a-plane position="4 0 -8" rotation="-90 0 0" width="4" height="4" color="#00ff00" shadow material="transparent: true; opacity: 0.2"></a-plane>
+<!--       and some decorations -->
+<!--       <a-box position="-1.25 1 -6" height="0.5" width="0.5" depth="0.5" color="#EF2D5E" shadow material="transparent: true; opacity: 0.5"></a-box> -->
+      <a-box position="-1.2030 1 -6" height="0.4030" width="0.4030" depth="0.4030" color="#EF2D5E" shadow material="transparent: true; opacity: 0.5"></a-box>
+      <a-sphere position="1.25 1 -6" radius="0.25" color="#4CC3D9" shadow material="transparent: true; opacity: 0.5"></a-sphere>
+<!--       make it point up, looking like a triangle to the circle, give it the same volume as the other two -->
+<!--       you're taller than me :: but you're floating off the ground -->
+      
+      <a-tetrahedron position="0 2.143 -6" rotation="0 0 0" radius="0.25" height="0.5" color="#7BC8A4" shadow material="transparent: true; opacity: 0.5"></a-tetrahedron>
+      
+      <a-assets >
+        <img id="berenjena" src="https://res.cloudinary.com/hellofresh/image/upload/f_auto,fl_lossy,q_80,w_640/v1/hellofresh_s3/ingredient/57110773f8b25ebd2e8b4644-2f13fa1f.png">
+      </a-assets>
+      
+      <a-image position="0 1.515 -1" src="#berenjena" ></a-image>
+      <a-box id="robot" position="0 1.515 -0.515" height="1" width="1" depth="1" color="#ffffff">
+        <a-text id="text_wall" position="-0.05 0.085 0.501" value="KLK" height="1" width="1" color="black"></a-text>
+      </a-box>
+        
+      <a-text position="0 1 -2.0042" value="BALTRI" material="opacity: 0.2"></a-text>
+      
+      <script>
+        let Robot = {
+          entity: document.querySelector('#robot'),
+          position: document.querySelector('#robot').getAttribute('position'),
+          text: document.querySelector('#text_wall'),
+        }
+        window.robot = Robot
+        
+        let end_time = 20000
+        var timeline = [
+          {time:2100, value:"KLK M"},
+          {time:2500, value:"KLK MA"},
+          {time:2900, value:"KLK MAN"},
+          {time:3400, value:"KLK MANI"},
+          {time:3900, value:"KLK MANIT"},
+          {time:4400, value:"KLK MANITU"},
+          {time:10000, value:"HAHAHAHAHA, BYE!"},
+          {time:14000, value:"DANGIT"},
+          {time:16000, value:"THERE'S NOWHERE\nTO RUN TO"},
+          {time:18000, value:"..."},
+          {time:end_time, value:"I SHOULD ADD\nMORE TO THIS\n\n-J"},
+          // WELCOME TO THE GAME
+          {time:false, value:"< end of input >"},
+        ]
+        // let movement = setInterval(step, 66.6666);
+        let delay = 1
+        let movement = setInterval(step, delay);
+        let step_count = 0;
+        let speed = 0.0001
+        function step() {
+          step_count++
+          Robot.position.z -= speed
+          // if(step_count % 100 == 0) {
+          //   console.log(step_count)
+          // }
+          if(step_count == 9800) {
+            speed *= 100
+          }
+          let line = 0;
+          if(step_count == timeline[0].time) {
+            let text = timeline.shift().value
+            Robot.text.setAttribute('value', text)
+          }
+          if(step_count == 20000) {
+            clearInterval(movement)
+          }
+            
+        }
+      </script>
+      
+      <a-text position="-0.66 1.5 -6" height="1" width="2" value="it's something"></a-text>
+      
+<!--       TODO: https://open.spotify.com/user/12146262995/playlist/7njH912pIglMx9kOl9IYqU?si=xNKCaztYRQu3ZC_mUaSjIA -->
+<!--       Feria Baltri de Arte y Entretenimiento -->
+      
+    </a-scene>
+  </body>
 </html>
